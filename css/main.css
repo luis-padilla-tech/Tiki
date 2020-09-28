@@ -1,0 +1,32 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 80%;
+    margin: auto;
+    background: #1f1f1f;
+    color: white;
+}
+
+h1,h2,h3,h4,h5,h6  {
+    font-family: 'Sansita', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    text-align: center;
+    padding: 1rem;
+    border-radius: .5rem;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: white;
+    color: black;
+}
+
+.btn-primary:hover {
+    color: white;
+    background-color: #420dab;
+}
