@@ -18,13 +18,18 @@ var timeLeftSeconds;
 var timerInterval;
 
 function startTimer(seconds){
+
     timerInterval = setInterval(timerTick, 1000);
     timeLeftSeconds = seconds;
     changeTimeText()
 }
 
 function stopTimer(){
+
     clearInterval(timerInterval);
+
+    timeLeftSeconds = 0;
+    changeTimeText();
 }
 
 function timerTick(){
@@ -41,6 +46,7 @@ function timerTick(){
 }
 
 function changeTimeText() {
+    
     let minutes = '' + Math.floor(timeLeftSeconds / 60);
     let seconds = '' + timeLeftSeconds % 60;
     

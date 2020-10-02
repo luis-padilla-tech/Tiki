@@ -1,8 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
-const electron = require('electron');
 const path = require('path');
 const env = process.env.NODE_ENV || 'development';
-const isMac = process.platform === 'darwin';
   
 // If development environment 
 if (env === 'development') { 
@@ -15,6 +13,7 @@ if (env === 'development') {
 function createWindow () {
   // Create the browser window.
   const win = new BrowserWindow({
+
     width: 800,
     height: 600,
     webPreferences: {
@@ -22,6 +21,8 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
+  win.setMenu(null);
 
   // and load the index.html of the app.
   win.loadFile('index.html')
@@ -54,5 +55,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-require('./scripts/menuHandler.js')

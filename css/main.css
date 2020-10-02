@@ -1,5 +1,10 @@
-body {
+* {
+    outline: none;
+    user-select: none;
     font-family: 'Roboto', sans-serif;
+}
+
+body {
     width: 80%;
     margin: auto;
     background: #1f1f1f;
@@ -7,11 +12,28 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6  {
+    margin: 2rem 0;
     font-family: 'Sansita', sans-serif;
 }
 
 a {
     text-decoration: none;
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: white solid 3px;
+}
+
+input::-webkit-inner-spin-button {
+ appearance: none;
+}
+
+input[type=number]{
+    -moz-user-select: text;
 }
 
 .btn {
@@ -24,9 +46,13 @@ a {
 .btn-primary {
     background-color: white;
     color: black;
+    transition: background-color .3s, border .3s, color .3s;
+    border: white 3px solid ;
 }
 
 .btn-primary:hover {
     color: white;
+    cursor: pointer;
     background-color: #420dab;
+    border: #420dab 3px solid;
 }
