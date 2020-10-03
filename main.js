@@ -13,7 +13,7 @@ if (env === 'development') {
 function createWindow () {
   // Create the browser window.
   const win = new BrowserWindow({
-
+    icon: 'Icons/favicon.ico',
     width: 800,
     height: 600,
     webPreferences: {
@@ -30,6 +30,8 @@ function createWindow () {
   // Open the DevTools.
   win.webContents.openDevTools()
 }
+
+app.setAppUserModelId(process.execPath)
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

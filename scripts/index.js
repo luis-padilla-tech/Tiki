@@ -60,9 +60,11 @@ function changeTimeText() {
 function displayNotification(){
 
     const notice = new Notification( 'Tiki - Stay Strong', {
-
-        body: getNotificationBody()
+        icon: './Icons/favicon.ico',
+        body: getNotificationBody(),
+        title: 'Tiki',
     });
+
 
     createNewTimer();
 }
