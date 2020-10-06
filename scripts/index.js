@@ -19,15 +19,17 @@ var timerInterval;
 
 function startTimer(seconds){
 
-    timerInterval = setInterval(timerTick, 1000);
-    timeLeftSeconds = seconds;
-    changeTimeText()
+    if(timerInterval === undefined | timerInterval == null){
+        timerInterval = setInterval(timerTick, 1000);
+        timeLeftSeconds = seconds;
+        changeTimeText();
+    }
 }
 
 function stopTimer(){
 
     clearInterval(timerInterval);
-
+    timerInterval = null;
     timeLeftSeconds = 0;
     changeTimeText();
 }
@@ -64,8 +66,7 @@ function displayNotification(){
         body: getNotificationBody(),
         title: 'Tiki',
     });
-
-
+    
     createNewTimer();
 }
 

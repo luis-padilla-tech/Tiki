@@ -6,7 +6,6 @@ const siteBlocker = require('./siteBlocker')
 let settings = storage.getSettings();
 
 siteBlocker.readFile(storage.gethostFileLocation());
-siteBlocker
 
 let workTimeInput = document.getElementById('txt_workTime');
 workTimeInput.value = settings.workTime;

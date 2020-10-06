@@ -1,6 +1,9 @@
 var fs = require('fs');
 
 function readFile(fileLocation) {
+
+    console.log('reading file', fileLocation);
+
     fs.readFile(fileLocation, 'UTF-8' ,(err, data) => {
         if(err) {
             throw err;
@@ -19,7 +22,17 @@ function readFile(fileLocation) {
  */
 function flipFiles(fileLocation1, fileLocation2) {
 
-    tempFilePath1 = getRandomFileName(fileLocation1);
+    let tempFilePath1 = getRandomFileName(fileLocation1);
+
+    console.log(`trying to rename ${fileLocation1} file to ${tempFilePath1}`);
+
+    fs.rename(fileLocation1, tempFilePath1, (err) =>{
+        if(err){
+            console.log('error renaming', err);
+        }else{
+           console.log('success renaming file'); 
+        }
+    });
     // tempFilePath2 = getRandomFileName(fileLocation2);
 }
 
@@ -28,7 +41,6 @@ function flipFiles(fileLocation1, fileLocation2) {
  * @param {string} originalFilePath 
  */
 function getRandomFileName(originalFilePath){
-
 
     let newRandomName = 'TIKI_';
     const max = 10
