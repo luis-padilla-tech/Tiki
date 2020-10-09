@@ -2,6 +2,11 @@
   "name": "tiki",
   "version": "1.0.0",
   "main": "main.js",
+  "description": "Manage Time",
+  "author": {
+    "name": "Luis Padilla",
+    "email": "luis@luispadilla.tech"
+  },
   "scripts": {
     "start": "set NODE_ENV=development&&electron .",
     "pack": "electron-builder --dir",
@@ -9,11 +14,25 @@
   },
   "keywords": [],
   "license": "ISC",
-  "build":{
+  "build": {
+    "appId": "myAppId",
+    "win": {
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "/Icons/favicon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    }
   },
   "devDependencies": {
-    "electron": "^10.1.2",
     "electron-builder": "^22.8.1",
+    "electron": "^10.1.2",
     "electron-reload": "^1.5.0",
     "electron-reloader": "^1.0.1"
   }

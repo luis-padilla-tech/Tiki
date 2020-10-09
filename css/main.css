@@ -37,6 +37,7 @@ input[type=number]{
 }
 
 .btn {
+    overflow-x: hidden;
     text-align: center;
     padding: 1rem;
     border-radius: .5rem;

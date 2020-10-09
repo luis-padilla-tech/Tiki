@@ -1,3 +1,17 @@
+const storage = require('./storage');
+const settings = storage.getSettings();
+
+const WORK_TIME = getSettingInSeconds(settings.workTime);
+const SHORT_BREAK_TIME = getSettingInSeconds(settings.shortBreak);
+const LONG_BREAK_TIME = getSettingInSeconds(settings.longBreak);
+const SHORT_BREAKS_BEFORE_LONG_BREAK = getSettingInSeconds(settings.shortBreakBeforeLongBreak);
+
+var breaksTaken = 0;
+
+var isOnBreak = false;
+var timeLeftSeconds;
+var timerInterval;
+
 document.getElementById('btn_startTimer').addEventListener('click', ()=>{
     isOnBreak = false;
     startTimer(WORK_TIME);
@@ -7,16 +21,18 @@ document.getElementById('btn_stopTimer').addEventListener('click', ()=>{
     stopTimer();
 })
 
-const WORK_TIME = 6;
-const SHORT_BREAK_TIME = 2;
-const LONG_BREAK_TIME = 10;
-const SHORT_BREAKS_BEFORE_LONG_BREAK = 4;
-var breaksTaken = 0;
+/**
+ * 
+ * @param {number} settingTime 
+ */
+function getSettingInSeconds(settingTime) {
+    return settingTime * 60;
+}
 
-var isOnBreak = false;
-var timeLeftSeconds;
-var timerInterval;
-
+/**
+ * 
+ * @param {number} seconds 
+ */
 function startTimer(seconds){
 
     if(timerInterval === undefined | timerInterval == null){
@@ -26,6 +42,9 @@ function startTimer(seconds){
     }
 }
 
+/**
+ * 
+ */
 function stopTimer(){
 
     clearInterval(timerInterval);
@@ -34,6 +53,9 @@ function stopTimer(){
     changeTimeText();
 }
 
+/**
+ * 
+ */
 function timerTick(){
 
     timeLeftSeconds--;
@@ -47,6 +69,9 @@ function timerTick(){
     
 }
 
+/**
+ * 
+ */
 function changeTimeText() {
     
     let minutes = '' + Math.floor(timeLeftSeconds / 60);
@@ -59,6 +84,9 @@ function changeTimeText() {
     document.getElementById('timerText').textContent = newTimerText
 }
 
+/**
+ * 
+ */
 function displayNotification(){
 
     const notice = new Notification( 'Tiki - Stay Strong', {
@@ -70,10 +98,16 @@ function displayNotification(){
     createNewTimer();
 }
 
+/**
+ * 
+ */
 function getNotificationBody() {
     return isOnBreak  ? 'Let start the grind again' : 'Break time';
 }
 
+/**
+ * 
+ */
 function createNewTimer() {
     if (isOnBreak){
         startTimer(WORK_TIME)
